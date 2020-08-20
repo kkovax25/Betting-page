@@ -20,14 +20,14 @@ const GameListItem = ({ game, setCurrent }) => {
   return (
     <div style={style.container} className="row">
       <div style={{ textAlign: 'center' }} className="col s1">
-        <p style={{ margin: '0' }}>
+        <p style={{ margin: '0', width: '32px' }}>
           {game.fixture.status.short === '1H'
             || game.fixture.status.short === 'HT'
             || game.fixture.status.short === '2H'
             ? `${game.fixture.status.elapsed}'`
             : unixConverterHour(game.fixture.timestamp)}
           <br />
-          <span style={{ fontSize: '10px' }} className='grey-text'>
+          <span style={{ fontSize: '9px' }} className='grey-text'>
             {unixConverter(game.fixture.timestamp)}
           </span>
         </p>
@@ -48,7 +48,7 @@ const GameListItem = ({ game, setCurrent }) => {
       </div>
       <div style={style.teamContainer} className="col s3 offset-s1">
         <img style={{ height: '30px' }} src={game.teams.home.logo} alt="HomeLogo" className=" responsive-img" />
-        <p style={{ margin: '0' }} >
+        <p style={{ margin: '0', width: '150px' }} >
           {game.teams.home.name}</p></div>
       <div className="col s2">
         <a style={{ boxShadow: 'none', background: '#3f4853' }} href='#!'
@@ -63,10 +63,10 @@ const GameListItem = ({ game, setCurrent }) => {
           {game.goals.home}-{game.goals.away}</a>
       </div>
       <div style={style.teamContainer} className="col s3">
-        <img style={{ height: '30px' }} src={game.teams.away.logo} alt="AwayLogo" className=" responsive-img" />
-        <p style={{ margin: '0' }} >
+        <p style={{ margin: '0', width: '150px' }} >
           {game.teams.away.name}
         </p>
+        <img style={{ height: '30px' }} src={game.teams.away.logo} alt="AwayLogo" className=" responsive-img" />
       </div>
       <div className="col s3 offset-s1" style={{ fontSize: '13px' }}><a href='#match-details-modal' className='grey-text modal-trigger'
         onClick={() => setCurrent(game)}>
@@ -86,6 +86,8 @@ const style = {
     display: "flex",
     alignItems: 'center',
     textAlign: 'center',
+    margin: '0 0 20px',
+    borderRadius: '8px'
   },
   statusIconStyle: {
     height: '15px',
@@ -98,9 +100,11 @@ const style = {
     margin: '0'
   },
   teamContainer: {
+    padding: '0',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+
   }
 }
 

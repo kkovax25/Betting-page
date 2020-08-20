@@ -1,16 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import GameListItem from './GameListItem';
 import { connect } from 'react-redux';
 import { getGames } from '../../actions/gameActions';
 import Preloader from '../layout/Preloader';
 
 const GameList = ({ games, getGames }) => {
-  useEffect(() => {
-    getGames()
-    //eslint-disable-next-line
-  }, [])
   return (
-    <div style={{ height: '300px', width: '100%', overflow: 'scroll' }}>
+    <div style={{ height: '300px', overflow: 'scroll' }}>
       {games === null || games.response.length === 0
         ? <Preloader />
         : games.response.map(game =>
