@@ -3,7 +3,7 @@ import React from 'react'
 const SideBar = () => {
   return (
     <div >
-      <ul id='slide-out' className='sidenav sidenav-fixed' style={{ background: '#14181C', color: '#525A66' }}>
+      <ul id='slide-out' className='sidenav' style={{ background: '#14181C', color: '#525A66' }}>
         <li>
           <div className='user-view' style={{ padding: '0', marginTop: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexFlow: 'column' }}>
             <a className='sidenav-close' href='#!' style={{ color: '#525A66' }}>

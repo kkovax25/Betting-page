@@ -1,0 +1,20 @@
+.indicator {
+  background-color: #9e9e9e !important;
+  height: 1px !important;
+  opacity: 0.5 !important;
+}
+
+.tabs .tab a:focus,
+.tabs .tab a:focus.active {
+  color: #fbfcfc !important;
+  font-size: 14px !important;
+  background-color: transparent !important;
+}
+
+.progress {
+  background-color: #13181c;
+}
+
+.progress .indeterminate {
+  background-color: #2d333a;
+}
