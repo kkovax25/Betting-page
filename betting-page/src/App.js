@@ -8,6 +8,7 @@ import GameListModal from './components/gameList/GameModal';
 import SideBar from './components/layout/SideBar';
 import LeagueCard from './components/leagueCard/LeagueCard';
 import Tab from './components/layout/Tab';
+import LeagueModal from './components/leagueCard/LeagueModal';
 
 function App() {
   useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
             <LeagueCard />
             <Tab></Tab>
             <GameListModal></GameListModal>
+            <LeagueModal></LeagueModal>
           </div>
         </div>
         <div className="col s12 m2 l2" style={{ border: '0px solid red', height: '100vh', background: '#14181C' }}></div>

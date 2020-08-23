@@ -1,29 +1,55 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
+import { setCurrentLeague, getLeagueStanding, getLeagueTopScorers } from '../../actions/gameActions'
 
-const LeagueCard = () => {
+const LeagueCard = ({ setCurrentLeague, getLeagueStanding, getLeagueTopScorers }) => {
+  const leagues = [
+    {
+      name: 'epl',
+      id: 39,
+      background: '#04FF87',
+      imgSrc: 'img/leagueIcons/premierleague.png'
+    },
+    {
+      name: 'laLiga',
+      id: 140,
+      background: '#FC7136',
+      imgSrc: 'img/leagueIcons/laliga.png'
+    },
+    {
+      name: 'serie',
+      id: 135,
+      background: '#004F8C',
+      imgSrc: 'img/leagueIcons/seriea.png'
+    },
+    {
+      name: 'bundes',
+      id: 78,
+      background: '#D2010C',
+      imgSrc: 'img/leagueIcons/bundesliga.png'
+    },
+    {
+      name: 'ligue',
+      id: 61,
+      background: '#DBE021',
+      imgSrc: 'img/leagueIcons/ligue1.png'
+    },
+  ]
+
+  const getLeagueInfo = (league) => {
+    setCurrentLeague(league);
+    getLeagueStanding(league.id);
+    getLeagueTopScorers(league.id)
+  }
   return (
     <div style={style.containerStyle}
       className='row hide-on-small-only'>
-      <div className="col s1 hoverable"
-        style={{ ...style.divStyle, background: '#04FF87', margin: '0' }}>
-        <img style={style.imgStyle} src='img/leagueIcons/premierleague.png' alt='League logo'></img>
-      </div>
-      <div className="col s1 hoverable"
-        style={{ ...style.divStyle, background: '#FC7136' }}>
-        <img style={style.imgStyle} src='img/leagueIcons/laliga.png' alt='League logo'></img>
-      </div>
-      <div className="col s1 hoverable"
-        style={{ ...style.divStyle, background: '#004F8C' }}>
-        <img style={style.imgStyle} src='img/leagueIcons/seriea.png' alt='League logo'></img>
-      </div>
-      <div className="col s1 hoverable"
-        style={{ ...style.divStyle, background: '#D2010C' }}>
-        <img style={style.imgStyle} src='img/leagueIcons/bundesliga.png' alt='League logo'></img>
-      </div>
-      <div className="col s1 hoverable"
-        style={{ ...style.divStyle, background: '#DBE021' }}>
-        <img style={style.imgStyle} src='img/leagueIcons/ligue1.png' alt='League logo'></img>
-      </div>
+      {leagues.map(league => (
+        <a href="#leagueModal" className='col s1 hoverable leagueCard modal-trigger' style={{ ...style.cardStyle, background: league.background }} key={league.id} onClick={() => getLeagueInfo(league)}>
+          <img style={style.imgStyle} src={league.imgSrc} alt='League logo'>
+          </img>
+        </a>
+      ))}
     </div >
   )
 }
@@ -42,11 +68,11 @@ const style = {
     height: '65px',
     marginTop: '22px'
   },
-  divStyle: {
+  cardStyle: {
     height: '130px',
     width: '130px',
     borderRadius: '20px',
   }
 }
 
-export default LeagueCard
+export default connect(null, { setCurrentLeague, getLeagueStanding, getLeagueTopScorers })(LeagueCard);
