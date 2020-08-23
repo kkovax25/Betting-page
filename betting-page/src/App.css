@@ -18,3 +18,7 @@
 .progress .indeterminate {
   background-color: #2d333a;
 }
+
+.leagueCard:first-child {
+  margin: 0px !important;
+}

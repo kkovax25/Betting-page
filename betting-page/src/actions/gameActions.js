@@ -1,11 +1,10 @@
-import { GET_GAMES, SET_LOADING, LOGS_ERROR, GET_GAME_EVENTS, SET_CURRENT } from './types';
+import { GET_GAMES, SET_LOADING, LOGS_ERROR, GET_GAME_EVENTS, SET_CURRENT, SET_CURRENT_LEAGUE, GET_LEAGUE_STANDINGS, GET_LEAGUE_TOP_SCORERS } from './types';
 
 export const getGames = () => async dispatch => {
   try {
     setLoading();
     const res = await fetch("http://localhost:5000/api/teams/games")
     const data = await res.json();
-    console.log(data.data[3].response);
 
     dispatch({
       type: GET_GAMES,
@@ -32,7 +31,6 @@ export const getLiveGames = () => async dispatch => {
       }
     });
     const data = await res.json();
-    console.log(data);
 
     dispatch({
       type: GET_GAMES,
@@ -60,7 +58,6 @@ export const getFinishedGames = (date) => async dispatch => {
       }
     });
     const data = await res.json();
-    console.log(data);
 
     dispatch({
       type: GET_GAMES,
@@ -87,7 +84,6 @@ export const getScheduledGames = (date) => async dispatch => {
       }
     });
     const data = await res.json();
-    console.log(data);
 
     dispatch({
       type: GET_GAMES,
@@ -102,7 +98,58 @@ export const getScheduledGames = (date) => async dispatch => {
   }
 }
 
+export const getLeagueStanding = (id) => async dispatch => {
+  try {
+    setLoading();
+    const url = `https://v3.football.api-sports.io/standings?league=${id}&season=2019`
 
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': `${process.env.REACT_APP_API_KEY}`,
+        Accept: 'application/json'
+      }
+    });
+    const data = await res.json();
+
+    dispatch({
+      type: GET_LEAGUE_STANDINGS,
+      payload: data.response[0].league
+    })
+
+  } catch (err) {
+    dispatch({
+      type: LOGS_ERROR,
+      payload: err
+    })
+  }
+}
+export const getLeagueTopScorers = (id) => async dispatch => {
+  try {
+    setLoading();
+    const url = `https://v3.football.api-sports.io/players/topscorers?season=2019&league=${id}`
+
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': `${process.env.REACT_APP_API_KEY}`,
+        Accept: 'application/json'
+      }
+    });
+    const data = await res.json();
+
+    dispatch({
+      type: GET_LEAGUE_TOP_SCORERS,
+      payload: data.response
+    })
+
+  } catch (err) {
+    dispatch({
+      type: LOGS_ERROR,
+      payload: err
+    })
+  }
+}
 
 export const setLoading = () => {
   return {
@@ -116,6 +163,13 @@ export const setCurrent = (game) => {
     payload: game
   }
 }
+export const setCurrentLeague = (league) => {
+  return {
+    type: SET_CURRENT_LEAGUE,
+    payload: league
+  }
+}
+
 
 
 export const getGameEvents = (currentGameId) => async dispatch => {
@@ -129,7 +183,6 @@ export const getGameEvents = (currentGameId) => async dispatch => {
       }
     });
     const data = await res.json();
-    console.log(data);
     dispatch({
       type: GET_GAME_EVENTS,
       payload: data
