@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getGames } from '../../actions/gameActions';
 import Preloader from '../layout/Preloader';
 
-const GameList = ({ games, getGames }) => {
+const GameList = ({ games }) => {
   return (
     <div style={{ height: '300px', overflow: 'scroll' }}>
       {games === null || games.response.length === 0
