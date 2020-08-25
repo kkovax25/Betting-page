@@ -22,3 +22,7 @@
 .leagueCard:first-child {
   margin: 0px !important;
 }
+
+.slider .indicators {
+  display: none !important;
+}
