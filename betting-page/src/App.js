@@ -20,7 +20,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="row" style={{ background: '#1D2328' }}>
-        <div className="col s12 m0 l2 hide-on-med-and-down" style={{ height: '300vh', background: '#14181C' }}>
+        <div className="col s12 m0 l2 " style={{ background: '#14181C', minWidth: '240px' }}>
           <SideBar></SideBar>
         </div>
         <div className="col s12 m10 l8" style={{ border: '0px solid white', padding: '0' }}>
