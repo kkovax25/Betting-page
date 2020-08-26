@@ -1,16 +1,23 @@
 import { GET_GAMES, SET_LOADING, LOGS_ERROR, GET_GAME_EVENTS, SET_CURRENT, SET_CURRENT_LEAGUE, GET_LEAGUE_STANDINGS, GET_LEAGUE_TOP_SCORERS } from './types';
 
-export const getGames = () => async dispatch => {
+export const getGames = (date) => async dispatch => {
   try {
     setLoading();
-    const res = await fetch("http://localhost:5000/api/teams/games")
+    const url = `https://v3.football.api-sports.io/fixtures?date=${date}`
+
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': `${process.env.REACT_APP_API_KEY}`,
+        Accept: 'application/json'
+      }
+    });
     const data = await res.json();
 
     dispatch({
       type: GET_GAMES,
-      payload: data.data[3]
+      payload: data
     })
-
   } catch (err) {
     dispatch({
       type: LOGS_ERROR,

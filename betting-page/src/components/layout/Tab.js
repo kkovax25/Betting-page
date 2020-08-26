@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getGames, getLiveGames, getFinishedGames, getScheduledGames } from '../../actions/gameActions';
 const Tab = ({ getGames, getLiveGames, getFinishedGames, getScheduledGames }) => {
   useEffect(() => {
-    getGames();
+    getGames(date());
     //eslint-disable-next-line
   }, [])
 
