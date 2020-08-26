@@ -1,5 +1,8 @@
 ## Current phase of the project
 
+<img src="https://i.imgur.com/27Hz3cW.png"
+     alt="CurrentPhase" />
+     
 ## Available Scripts
 
 In the project directory, you can run:
