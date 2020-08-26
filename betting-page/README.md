@@ -1,6 +1,4 @@
 ## Current phase of the project
-![Image of the Landing Page](https://imgur.com/27Hz3cW)
-![Image of the Landing Page2](https://imgur.com/mpSXVkX)
 
 ## Available Scripts
 
