@@ -2,8 +2,8 @@ import React from 'react'
 
 const SideBar = () => {
   return (
-    <div >
-      <ul id='slide-out' className='sidenav' style={{ background: '#14181C', color: '#525A66' }}>
+    <div>
+      <ul id='slide-out' className='sidenav sidenav-fixed' style={{ width: 'auto', background: '#14181C', color: '#525A66' }}>
         <li>
           <div className='user-view' style={{ padding: '0', marginTop: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexFlow: 'column' }}>
             <a className='sidenav-close' href='#!' style={{ color: '#525A66' }}>
@@ -64,10 +64,16 @@ const SideBar = () => {
           </li>
         </ul>
         <div className='divider' style={{ opacity: '0.1' }}></div>
-
       </ul>
-      <a href='#!' data-target='slide-out' className='sidenav-trigger' style={{ color: '#525A66' }}> <i className='small material-icons '>menu</i> </a>
-
+      <a href='#!' data-target='slide-out' className='sidenav-trigger left' style={{ color: '#525A66' }}>
+        <i className='small material-icons '>menu</i>
+      </a>
+      <div style={{ display: "flex", flexFlow: 'row', alignItems: "center", justifyContent: 'space-evenly', border: '0px solid red', width: '80%' }}>
+        <h6 className='white-text' style={{ margin: '0' }}>Kovács Krisztián</h6>
+        <p className='white-text' style={{ margin: '0', display: 'flex', alignItems: 'center' }}>
+          <i className='small material-icons'>attach_money</i>
+          20.000 Ft</p>
+      </div>
 
     </div>
   )
