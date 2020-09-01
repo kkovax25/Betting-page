@@ -14,6 +14,18 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  favouriteTeams: {
+    type: Array,
+    default: []
+  },
+  favouriteLeagues: {
+    type: Array,
+    default: []
+  },
+  balance: {
+    type: Number,
+    default: 0,
+  },
   date: {
     type: Date,
     default: Date.now
