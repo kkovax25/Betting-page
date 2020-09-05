@@ -6,10 +6,15 @@ import './App.css';
 import { Provider } from 'react-redux';
 import store from './store';
 import HomePage from './components/pages/HomePage';
-import Register from './components/auth/Register';
+import setAuthToken from './utils/setAuthToken';
+import { loadUser } from './actions/authActions';
 
+if (localStorage.token) {
+  setAuthToken(localStorage.token)
+}
 function App() {
   useEffect(() => {
+    store.dispatch(loadUser());
     M.AutoInit();
   })
 
@@ -19,7 +24,6 @@ function App() {
       <Provider store={store}>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route exact path='/register' component={Register} />
         </Switch>
       </Provider>
     </Router>
