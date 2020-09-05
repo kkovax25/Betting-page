@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { register } from '../../actions/authActions'
 
-const Register = ({ register }) => {
+const Register = ({ register, isAuthenticated }) => {
+  useEffect(() => {
+    if (isAuthenticated) {
+      console.log(isAuthenticated);
+    }
+  },
+    [isAuthenticated,]);
+
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -21,8 +28,8 @@ const Register = ({ register }) => {
       password
     })
   }
-  return (
 
+  return (
     <div className="row">
       <h3>Account
         <span className="grey-text"> Register</span>
@@ -59,4 +66,8 @@ const Register = ({ register }) => {
   )
 }
 
-export default connect(null, { register })(Register)
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, { register })(Register)
