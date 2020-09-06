@@ -10,13 +10,13 @@ const Tab = ({ getGames, getLiveGames, getFinishedGames, getScheduledGames }) =>
 
   const date = () => {
     let date = new Date();
-    return `${date.getFullYear()}-${date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1}-${date.getDate()}`
+    return `${date.getFullYear()}-${date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1}-${date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()}`
   }
 
 
   return (
     <div className="row">
-      <div className="col s12" style={{ border: '0px solid red' }}>
+      <div className="col s12">
         <ul className="tabs" style={{ marginBottom: '10px', background: 'none', border: '0px solid green' }}>
 
           <li className="tab"><a style={style.tabStyle} href="#allGames" className='active' onClick={getGames}>All Games</a></li>
