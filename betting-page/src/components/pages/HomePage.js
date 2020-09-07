@@ -5,6 +5,7 @@ import LeagueCard from '../leagueCard/LeagueCard';
 import Tab from '../layout/Tab';
 import LeagueModal from '../leagueCard/LeagueModal';
 import Header from '../layout/Header';
+import Navbar from '../layout/NavBar';
 const HomePage = () => {
   return (
     <div className="row" style={{ background: '#1D2328' }}>
@@ -12,6 +13,7 @@ const HomePage = () => {
         <SideBar></SideBar>
       </div>
       <div className="col s12 m10 l8" style={{ border: '0px solid white', padding: '0' }}>
+        <Navbar />
         <Header></Header>
         <div style={{ width: '90%', margin: '0 auto' }}>
           <LeagueCard />
