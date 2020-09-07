@@ -41,5 +41,4 @@ const Login = ({ login }) => {
   )
 }
 
-
 export default connect(null, { login })(Login)

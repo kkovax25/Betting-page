@@ -50,17 +50,6 @@ const SideBar = ({ user }) => {
         </ul>
         <div className='divider' style={{ opacity: '0.1' }}></div>
       </ul>
-
-      <a href='#!' data-target='slide-out' className='sidenav-trigger left hide-on-large-only' style={{ color: '#525A66' }}>
-        <i className='small material-icons '>menu</i>
-      </a>
-      <div style={{ display: "flex", flexFlow: 'row', alignItems: "center", justifyContent: 'space-evenly', border: '0px solid red', width: '80%' }}>
-        <h6 className='white-text' style={{ margin: '0' }}>{user === null ? '' : user.name}</h6>
-        <p className='white-text' style={{ margin: '0', display: 'flex', alignItems: 'center' }}>
-          <i className='small material-icons'>attach_money</i>
-          {user === null ? '' : user.balance} Ft</p>
-      </div>
-
     </div>
   )
 }
