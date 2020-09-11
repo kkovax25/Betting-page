@@ -7,6 +7,7 @@ import LeagueModal from '../leagueCard/LeagueModal';
 import Header from '../layout/Header';
 import Navbar from '../layout/NavBar';
 import Login from '../auth/Login';
+import Register from '../auth/Register';
 const HomePage = () => {
   return (
     <div className="row" style={{ background: '#1D2328' }}>
@@ -17,6 +18,7 @@ const HomePage = () => {
         <Navbar />
         <Header />
         <Login />
+        <Register />
         <div style={{ width: '90%', margin: '0 auto' }}>
           <LeagueCard />
           <Tab />

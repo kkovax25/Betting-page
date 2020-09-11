@@ -23,12 +23,19 @@ const SideBar = ({ user }) => {
               <p style={{ margin: '0', fontSize: '12px', textTransform: 'uppercase', color: '#525A66' }}>Favourite clubs</p>
             </a>
           </li>
-          {user !== null ? user.favouriteTeams.map(club => (<li key={club.id}>
-            <a href='#!' style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
-              <img src={club.logo} alt='Club logo' style={{ height: '30px', marginRight: '10px' }} />
-              <p style={{ margin: '0', fontSize: '12px', textTransform: 'uppercase', color: '#525A66' }}>{club.name}</p>
-            </a>
-          </li>)) : null}
+          {user !== null && user.favouriteTeams.length !== 0 ? user.favouriteTeams.map(club => (
+            <li key={club.id}>
+              <a href='#!' style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+                <img src={club.logo} alt='Club logo' style={{ height: '30px', marginRight: '10px' }} />
+                <p style={{ margin: '0', fontSize: '12px', textTransform: 'uppercase', color: '#525A66' }}>{club.name}</p>
+              </a>
+            </li>)) :
+            <li>
+              <a href='#!' style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+                <i className="material-icons" style={{ color: '#525A66' }}>add</i>
+                <p style={{ margin: '0', fontSize: '12px', textTransform: 'uppercase', color: '#525A66' }}>Please add teams</p>
+              </a>
+            </li>}
         </ul>
 
         <div className='divider' style={{ opacity: '0.1' }}></div>
@@ -39,14 +46,19 @@ const SideBar = ({ user }) => {
               <p style={{ margin: '0', fontSize: '12px', textTransform: 'uppercase', color: '#525A66' }}>Favourite Leagues</p>
             </a>
           </li>
-          {user !== null ? user.favouriteLeagues.map(league => (
+          {user !== null && user.favouriteLeagues.length !== 0 ? user.favouriteLeagues.map(league => (
             <li key={league.key}>
               <a href='#!' style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
                 <img src={league.logo} alt='League logo' style={{ height: '30px', marginRight: '10px' }} />
                 <p style={{ margin: '0', fontSize: '12px', textTransform: 'uppercase', color: '#525A66' }}>{league.name}</p>
               </a>
             </li>
-          )) : null}
+          )) : <li>
+              <a href='#!' style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+                <i className="material-icons" style={{ color: '#525A66' }}>add</i>
+                <p style={{ margin: '0', fontSize: '12px', textTransform: 'uppercase', color: '#525A66' }}>Please add leagues</p>
+              </a>
+            </li>}
         </ul>
         <div className='divider' style={{ opacity: '0.1' }}></div>
       </ul>

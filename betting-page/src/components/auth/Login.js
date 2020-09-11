@@ -20,7 +20,7 @@ const Login = ({ login }) => {
     <div id="login" className="modal" style={modalStyle}>
       <div className="modal-content center">
         <div className="row white-text">
-          <h3 style={{ marginBottom: '70px' }}>Account Login</h3>
+          <h3 style={{ marginBottom: '70px' }}> Login</h3>
           <form className="col s12" onSubmit={onSubmit}>
             <div className="row">
               <div className="input-field" style={{ width: '60%', margin: '0 auto' }}>
@@ -35,7 +35,7 @@ const Login = ({ login }) => {
               </div>
             </div>
             <button className="btn-flat grey darken-2 waves-effect waves-green white-text" type="submit" name="action">Login</button>
-            <a href="#!" className="modal-close grey darken-2 waves-effect waves-red btn-flat white-text" style={{ marginLeft: '10px' }}>Cancel</a>
+            <a href="#!" className="modal-close grey darken-2 waves-effect waves-red btn-flat white-text" style={{ marginLeft: '10px' }}>Close</a>
           </form>
         </div>
       </div>
@@ -47,7 +47,6 @@ const modalStyle = {
   width: '50%',
   height: '60%',
   background: '#2D333A'
-
 }
 
 export default connect(null, { login })(Login)

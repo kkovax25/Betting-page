@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { register } from '../../actions/authActions'
+import { register } from '../../actions/authActions';
+import M from 'materialize-css/dist/js/materialize.min.js';
 
-const Register = ({ register, isAuthenticated }) => {
+const Register = ({ register, error }) => {
   useEffect(() => {
-    if (isAuthenticated) {
-      console.log(isAuthenticated);
+    if (error) {
+      M.toast({ html: `${error}` })
     }
   },
-    [isAuthenticated,]);
-
+    [error]);
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -22,52 +22,66 @@ const Register = ({ register, isAuthenticated }) => {
   }
   const onSubmit = e => {
     e.preventDefault();
-    register({
-      name,
-      email,
-      password
-    })
+    if (name === '' || email === '' || password === '') {
+      M.toast({ html: 'Please fill all fields' })
+    } else if (password !== password2) {
+      M.toast({ html: 'Please enter the same password' })
+    } else {
+      register({
+        name,
+        email,
+        password
+      });
+    }
   }
 
   return (
-    <div className="row">
-      <h3>Account
-        <span className="grey-text"> Register</span>
-      </h3>
-      <form className="col s12" onSubmit={onSubmit}>
-        <div className="row">
-          <div className="input-field col s6">
-            <label htmlFor="last_name">Name</label>
-            <input type="text" name='name' value={name} onChange={onChange} />
-          </div>
+    <div id='register' className='modal' style={modalStyle}>
+      <div className='modal-content center'>
+        <div className='row'>
+          <h3 className='white-text'>Account Register
+          </h3>
+          <form className='col s12' onSubmit={onSubmit}>
+            <div className='row'>
+              <div className='input-field' style={{ width: '50%', margin: '0 auto' }}>
+                <label htmlFor='last_name'>Name</label>
+                <input className='white-text' type='text' name='name' value={name} onChange={onChange} />
+              </div>
+            </div>
+            <div className='row'>
+              <div className='input-field' style={{ width: '50%', margin: '0 auto' }}>
+                <label htmlFor='email'>Email</label>
+                <input className='white-text' type='email' name='email' value={email} onChange={onChange} />
+              </div>
+            </div>
+            <div className='row'>
+              <div className='input-field' style={{ width: '50%', margin: '0 auto' }}>
+                <label htmlFor='password'>Password</label>
+                <input className='white-text' type='password' name='password' value={password} onChange={onChange} />
+              </div>
+            </div>
+            <div className='row'>
+              <div className='input-field' style={{ width: '50%', margin: '0 auto' }}>
+                <label htmlFor='password2'>Confirm Password</label>
+                <input className='white-text' type='password' name='password2' value={password2} onChange={onChange} />
+              </div>
+            </div>
+            <button className='btn-flat grey darken-2 waves-effect waves-green white-text' type='submit' name='action'>Register</button>
+            <a href='#!' className='modal-close grey darken-2 waves-effect waves-red btn-flat white-text' style={{ marginLeft: '10px' }}>Close</a>
+          </form>
         </div>
-        <div className="row">
-          <div className="input-field col s6">
-            <label htmlFor="email">Email</label>
-            <input type="email" name='email' value={email} onChange={onChange} />
-          </div>
-        </div>
-        <div className="row">
-          <div className="input-field col s6">
-            <label htmlFor="password">Password</label>
-            <input type="password" name='password' value={password} onChange={onChange} />
-          </div>
-        </div>
-        <div className="row">
-          <div className="input-field col s6">
-            <label htmlFor="password2">Confirm Password</label>
-            <input type="password" name='password2' value={password2} onChange={onChange} />
-          </div>
-        </div>
-        <input type="submit" value="Register" />
-      </form>
+      </div>
     </div>
-
   )
 }
 
+const modalStyle = {
+  width: '65%',
+  height: '70%',
+  background: '#2D333A'
+}
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+  error: state.auth.error,
 })
 
 export default connect(mapStateToProps, { register })(Register)
