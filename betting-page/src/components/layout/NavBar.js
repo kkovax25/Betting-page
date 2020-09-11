@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/authActions';
-// import Login from '../auth/Login';
 
 const NavBar = ({ user, isAuthenticated, logout }) => {
   return (
@@ -24,12 +23,12 @@ const NavBar = ({ user, isAuthenticated, logout }) => {
                 <i className='small material-icons'>attach_money</i>
                 {user === null ? '' : user.balance} Ft</p> : null}
               {isAuthenticated !== null ? <a href="#!" onClick={logout}>Logout</a> : <a className='modal-trigger' href="#login">Login</a>}
-              <a className={`${isAuthenticated === true ? 'hide' : ''}`} href="badges.html">Register</a>
+              <a className={`modal-trigger ${isAuthenticated === true ? 'hide' : ''}`} href="#register">Register</a>
             </div>
           </div>
           <ul className="right hide-on-med-and-down">
             <li>{isAuthenticated !== null ? <a href="#!" onClick={logout}>Logout</a> : <a className='modal-trigger' href="#login">Login</a>}</li>
-            <li><a className={`${isAuthenticated === true ? 'hide' : ''}`} href="badges.html">Register</a></li>
+            <li><a className={`modal-trigger ${isAuthenticated === true ? 'hide' : ''}`} href="#register">Register</a></li>
           </ul>
         </div>
       </nav>

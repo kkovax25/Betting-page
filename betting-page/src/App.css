@@ -26,3 +26,10 @@
 .slider .indicators {
   display: none !important;
 }
+
+#toast-container {
+  min-width: 10%;
+  top: 10%;
+  right: 50%;
+  transform: translateX(50%) translateY(50%);
+}
