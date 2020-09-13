@@ -13,10 +13,9 @@ export const getGames = (date) => async dispatch => {
       }
     });
     const data = await res.json();
-
     dispatch({
       type: GET_GAMES,
-      payload: data
+      payload: data.response
     })
   } catch (err) {
     dispatch({
@@ -41,7 +40,7 @@ export const getLiveGames = () => async dispatch => {
 
     dispatch({
       type: GET_GAMES,
-      payload: data
+      payload: data.response
     })
 
   } catch (err) {
@@ -68,7 +67,7 @@ export const getFinishedGames = (date) => async dispatch => {
 
     dispatch({
       type: GET_GAMES,
-      payload: data
+      payload: data.response
     })
 
   } catch (err) {
@@ -94,7 +93,7 @@ export const getScheduledGames = (date) => async dispatch => {
 
     dispatch({
       type: GET_GAMES,
-      payload: data
+      payload: data.response
     })
 
   } catch (err) {

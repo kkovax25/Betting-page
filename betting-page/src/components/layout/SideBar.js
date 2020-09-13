@@ -47,7 +47,7 @@ const SideBar = ({ user }) => {
             </a>
           </li>
           {user !== null && user.favouriteLeagues.length !== 0 ? user.favouriteLeagues.map(league => (
-            <li key={league.key}>
+            <li key={league.id}>
               <a href='#!' style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
                 <img src={league.logo} alt='League logo' style={{ height: '30px', marginRight: '10px' }} />
                 <p style={{ margin: '0', fontSize: '12px', textTransform: 'uppercase', color: '#525A66' }}>{league.name}</p>

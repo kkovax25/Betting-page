@@ -8,6 +8,7 @@ import Header from '../layout/Header';
 import Navbar from '../layout/NavBar';
 import Login from '../auth/Login';
 import Register from '../auth/Register';
+import TopLeagues from '../topLeagues/TopLeagues';
 const HomePage = () => {
   return (
     <div className="row" style={{ background: '#1D2328' }}>
@@ -22,6 +23,11 @@ const HomePage = () => {
         <div style={{ width: '90%', margin: '0 auto' }}>
           <LeagueCard />
           <Tab />
+          <TopLeagues league='ligue' />
+          <TopLeagues league='epl' />
+          <TopLeagues league='laLiga' />
+          <TopLeagues league='serie' />
+          <TopLeagues league='bundes' />
           <GameListModal />
           <LeagueModal />
         </div>
