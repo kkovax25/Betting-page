@@ -2,40 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setCurrentLeague, getLeagueStanding, getLeagueTopScorers } from '../../actions/gameActions'
 
-const LeagueCard = ({ setCurrentLeague, getLeagueStanding, getLeagueTopScorers }) => {
-  const leagues = [
-    {
-      name: 'epl',
-      id: 39,
-      background: '#04FF87',
-      imgSrc: 'img/leagueIcons/premierleague.png'
-    },
-    {
-      name: 'laLiga',
-      id: 140,
-      background: '#FC7136',
-      imgSrc: 'img/leagueIcons/laliga.png'
-    },
-    {
-      name: 'serie',
-      id: 135,
-      background: '#004F8C',
-      imgSrc: 'img/leagueIcons/seriea.png'
-    },
-    {
-      name: 'bundes',
-      id: 78,
-      background: '#D2010C',
-      imgSrc: 'img/leagueIcons/bundesliga.png'
-    },
-    {
-      name: 'ligue',
-      id: 61,
-      background: '#DBE021',
-      imgSrc: 'img/leagueIcons/ligue1.png'
-    },
-  ]
-
+const LeagueCard = ({ leagues, setCurrentLeague, getLeagueStanding, getLeagueTopScorers }) => {
   const getLeagueInfo = (league) => {
     setCurrentLeague(league);
     getLeagueStanding(league.id);
@@ -75,4 +42,8 @@ const style = {
   }
 }
 
-export default connect(null, { setCurrentLeague, getLeagueStanding, getLeagueTopScorers })(LeagueCard);
+const mapStateToProps = state => ({
+  leagues: state.games.topLeagues
+})
+
+export default connect(mapStateToProps, { setCurrentLeague, getLeagueStanding, getLeagueTopScorers })(LeagueCard);

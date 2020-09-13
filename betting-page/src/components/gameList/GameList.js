@@ -7,9 +7,9 @@ import Preloader from '../layout/Preloader';
 const GameList = ({ games }) => {
   return (
     <div style={{ height: '500px', overflow: 'scroll' }}>
-      {games === null || games.response.length === 0
+      {games === null || games.length === 0
         ? <Preloader />
-        : games.response.map(game =>
+        : games.map(game =>
           <GameListItem game={game} key={game.fixture.id} />)
       }
     </div>

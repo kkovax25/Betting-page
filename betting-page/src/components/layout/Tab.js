@@ -17,7 +17,7 @@ const Tab = ({ getGames, getLiveGames, getFinishedGames, getScheduledGames }) =>
   return (
     <div className="row">
       <div className="col s12">
-        <ul className="tabs" style={{ marginBottom: '10px', background: 'none', border: '0px solid green' }}>
+        <ul className="tabs" style={{ marginBottom: '10px', background: 'none' }}>
 
           <li className="tab"><a style={style.tabStyle} href="#allGames" className='active' onClick={getGames}>All Games</a></li>
 
